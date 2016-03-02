@@ -27,6 +27,11 @@
   }
   Celsius.prototype = new Temperatura;
   Celsius.prototype.constructor = Celsius;
+  Celsius.prototype.toFarenheit = function()
+  {
+    console.log('Estamos en la funcion toFarenheit');
+    return 61.345;
+  }
 
 
   function Farenheit(valor)
@@ -36,6 +41,13 @@
   }
   Farenheit.prototype = new Temperatura;
   Farenheit.prototype.constructor = Farenheit;
+  Farenheit.prototype.toCelsius = function()
+  {
+    console.log('Estamos en la funcion toCelsius');
+    return 5.2345;
+  }
+
+
 
   exports.Temperatura = Temperatura;
   exports.Celsius = Celsius;
@@ -66,6 +78,7 @@
           break;
 
         default:
+        console.log ('Estamos en la parte default del metodo convertir');
           /* rellene este código */
       }
     }
