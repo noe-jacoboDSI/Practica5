@@ -3,29 +3,39 @@
 
   function Medida(valor,tipo)
   {
-    this.valor == valor || this.tipo == tipo;
+    var value = valor;
+    var type = tipo || "";
     /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
     /* ademas de new Medida(45.2, "Km") */
   }
+  Medida.constructor = Medida;
 
   function Temperatura(valor,tipo)
   {
     Medida.call(this, valor, tipo);
-    Temperatura.prototype = new Medida();
     /* tipo es opcional. Debería admitir new Medida("45.2 F") */
   }
+  Temperatura.prototype = new Medida();
+  Temperatura.prototype.constructor = Medida;
+
 
   function Celsius(valor)
   {
     Temperatura.call(this,valor);
-    Celsius.prototype = new Temperatura;
+
+
   }
+  Celsius.prototype = new Temperatura;
+  Celsius.prototype.constructor = Celsius;
+
 
   function Farenheit(valor)
   {
     Temperatura.call(this,valor);
-    Farenheit.prototype = new Temperatura;
+
   }
+  Farenheit.prototype = new Temperatura;
+  Farenheit.prototype.constructor = Farenheit;
 
   exports.Temperatura = Temperatura;
   exports.Celsius = Celsius;
