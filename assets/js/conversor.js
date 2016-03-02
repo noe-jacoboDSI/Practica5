@@ -30,7 +30,7 @@
   Celsius.prototype.toFarenheit = function()
   {
     console.log('Estamos en la funcion toFarenheit');
-    return 61.345;
+    return 100.11111;
   }
 
 
@@ -44,9 +44,23 @@
   Farenheit.prototype.toCelsius = function()
   {
     console.log('Estamos en la funcion toCelsius');
-    return 5.2345;
+    return 200.222222;
   }
 
+  function Kelvin(valor)
+  {
+    Temperatura.call(this,valor);
+
+  }
+  Kelvin.prototype = new Temperatura;
+  Kelvin.prototype.constructor = Kelvin;
+  // Obviamente no añadiremos toKelvin aqui
+  // Solo quiero comprobar que estamos dentro
+  Kelvin.prototype.toKelvin = function()
+  {
+    console.log('Estamos en la funcion toKelvin');
+    return 300.333333;
+  }
 
 
   exports.Temperatura = Temperatura;
@@ -75,6 +89,12 @@
         case 'f':
           var farenheit = new Farenheit(numero);
           elemento.innerHTML = farenheit.toCelsius().toFixed(2) + " Celsius";
+          break;
+        case 'k':
+          var kelvin = new Kelvin(numero);
+          // Esto no tiene sentido, solamente es para comprobar
+          // si la estructura del añadido kelvin esta OK
+          elemento.innerHTML = kelvin.toKelvin().toFixed(2) + " Kelvin";
           break;
 
         default:
