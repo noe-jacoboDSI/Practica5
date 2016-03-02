@@ -1,65 +1,74 @@
 (function(exports) {
   "use strict";
 
+  /********* Medida **************/
   function Medida(valor,tipo)
   {
-    var value = valor;
-    var type = tipo || "";
+    this.value = valor;
+    this.type = tipo;
     /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
     /* ademas de new Medida(45.2, "Km") */
   }
   Medida.constructor = Medida;
 
+  /******* Temperatura que hereda de Medida ***************/
   function Temperatura(valor,tipo)
   {
     Medida.call(this, valor, tipo);
     /* tipo es opcional. Debería admitir new Medida("45.2 F") */
   }
   Temperatura.prototype = new Medida();
-  Temperatura.prototype.constructor = Medida;
+  Temperatura.prototype.constructor = Temperatura;
 
-
+  /******** Celsius  que hereda de Temperatura ***********/
   function Celsius(valor)
   {
     Temperatura.call(this,valor);
-
-
   }
-  Celsius.prototype = new Temperatura;
+  Celsius.prototype = new Temperatura();
   Celsius.prototype.constructor = Celsius;
   Celsius.prototype.toFarenheit = function()
   {
-    console.log('Estamos en la funcion toFarenheit');
-    return 100.11111;
+    return ((this.value * 9/5) + 32);
   }
 
+  Celsius.prototype.toKelvin = function()
+  {
+    return (this.value + 273.15);
+  }
 
+  /********* Farenheit que hereda de Temperatura *********/
   function Farenheit(valor)
   {
     Temperatura.call(this,valor);
 
   }
-  Farenheit.prototype = new Temperatura;
+  Farenheit.prototype = new Temperatura();
   Farenheit.prototype.constructor = Farenheit;
   Farenheit.prototype.toCelsius = function()
   {
-    console.log('Estamos en la funcion toCelsius');
-    return 200.222222;
+    return ((this.value - 32)*5/9);
+  }
+  Farenheit.prototype.toK = function()
+  {
+    return (this.value * 18000 + 32);
   }
 
+  /******* Kelvin que hereda de Temperatura ********/
   function Kelvin(valor)
   {
     Temperatura.call(this,valor);
 
   }
-  Kelvin.prototype = new Temperatura;
+  Kelvin.prototype = new Temperatura();
   Kelvin.prototype.constructor = Kelvin;
-  // Obviamente no añadiremos toKelvin aqui
-  // Solo quiero comprobar que estamos dentro
-  Kelvin.prototype.toKelvin = function()
+  Kelvin.prototype.toC = function()
   {
-    console.log('Estamos en la funcion toKelvin');
-    return 300.333333;
+    return (this.value - 273.15);
+  }
+  Kelvin.prototype.toF = function()
+  {
+    return ((this.value - 32)/18000);
   }
 
 
@@ -72,7 +81,7 @@
         var valor = document.getElementById('convert').value,
         elemento  = document.getElementById('converted'),
         /* Extienda la RegeExp a la especificación. use una XRegExp */
-        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z]+)\s*$/i,
+        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([fFkKcC])(e|el|els|elsi|elsiu|elsiu|elsius|a|ar|are|aren|arenh|arenhe|arenhei|arenheit|elv|elvi|elvin)?\s*$/;
         valor     = valor.match(regexp);
 
     if (valor) {
@@ -93,9 +102,7 @@
           break;
         case 'k':
           var kelvin = new Kelvin(numero);
-          // Esto no tiene sentido, solamente es para comprobar
-          // si la estructura del añadido kelvin esta OK
-          elemento.innerHTML = kelvin.toKelvin().toFixed(2) + " Kelvin";
+          elemento.innerHTML = kelvin.toC().toFixed(2) + " Celsius";
           break;
 
         default:
