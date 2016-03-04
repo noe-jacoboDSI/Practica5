@@ -78,23 +78,37 @@
   exports.Kelvin = Kelvin;
 
   exports.convertir = function() {
-        var valor = document.getElementById('convert').value,
-        elemento  = document.getElementById('converted'),
+        //var valor = document.getElementById('convert').value,
+        //elemento  = document.getElementById('converted').value;
         /* Extienda la RegeExp a la especificación. use una XRegExp */
-        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([fFkKcC])(e|el|els|elsi|elsiu|elsiu|elsius|a|ar|are|aren|arenh|arenhe|arenhei|arenheit|elv|elvi|elvin)?\s*$/;
-        valor     = valor.match(regexp);
+    console.log("Valor antes del if: " +valor);
+
+      var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkK])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcKkFf])   #medida_destino ', 'x');
+
+
+
+        //regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([fFkKcC])(e|el|els|elsi|elsiu|elsiu|elsius|a|ar|are|aren|arenh|arenhe|arenhei|arenheit|elv|elvi|elvin)?\s* (to|To|tO|TO)?\s* ([cCfFkK])$/;
+        var valor = XRegExp.exec(convert.value, regexp);
+
+        console.log("Valor antes del if: " +valor);
 
     if (valor) {
-      var numero = valor[1],
-          tipo   = valor[2].toLowerCase();
-
+      var numero = valor[2],
+          tipo   = valor[3];
+          var nuevoTipo = valor.medida_destino,
       numero = parseFloat(numero);
-      console.log("Valor: " + numero + ", Tipo: " + tipo);
-//////
+      console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
+
+
+
       switch (tipo) {
         case 'c':
           var celsius = new Celsius(numero);
           elemento.innerHTML = celsius.toFarenheit().toFixed(2) + " Farenheit";
+          break;
+        case 'c to k':
+          var celsius = new celsius(numero);
+          elemento.innerHTML = celsius.toK().toFixed(2) + " kelvin";
           break;
         case 'f':
           var farenheit = new Farenheit(numero);
@@ -107,11 +121,12 @@
 
         default:
         console.log ('Estamos en la parte default del metodo convertir');
-          /* rellene este código */
+
       }
     }
     else
-      elemento.innerHTML = "";
+      //elemento.innerHTML = "";
+      console.log("Estamos en el else exterior.");
   }
 
 })(this);
