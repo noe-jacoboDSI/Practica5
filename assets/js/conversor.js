@@ -70,6 +70,18 @@
   {
     return (((this.value - 273)*9/5)+32);
   }
+  /******* Metros que hereda de Temperatura ********/
+  function Metros(valor)
+  {
+    Temperatura.call(this,valor);
+
+  }
+  Metros.prototype = new Temperatura();
+  Metros.prototype.constructor = Metros;
+  Metros.prototype.toP = function()
+  {
+    return (this.value * 39.37);
+  }
 
 
   exports.Temperatura = Temperatura;
@@ -83,7 +95,7 @@
         /* Extienda la RegeExp a la especificación. use una XRegExp */
     console.log("Valor antes del if: " +valor);
 
-      var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkK])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcKkFf])   #medida_destino ', 'x');
+      var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMm])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcKkPp])   #medida_destino ', 'x');
 
 
 
@@ -132,7 +144,14 @@
           elemento.innerHTML = kelvin.toF().toFixed(2) + " farenheit";
           }
           break;
+          case 'm':
+            var metros = new Metros(numero);
 
+            if(nuevoTipo == 'p'){
+              elemento.innerHTML = metros.toP().toFixed(2) + " pulgadas";
+            }
+
+            break;
         default:
         console.log ('Estamos en la parte default del metodo convertir');
 
