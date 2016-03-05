@@ -47,11 +47,11 @@
   Farenheit.prototype.constructor = Farenheit;
   Farenheit.prototype.toCelsius = function()
   {
-    return ((this.value - 32)*5/9);
+    return ((this.value - 32)* 5/9);
   }
   Farenheit.prototype.toK = function()
   {
-    return (this.value * 18000 + 32);
+    return (((this.value - 32)*5/9) + 273);
   }
 
   /******* Kelvin que hereda de Temperatura ********/
@@ -68,7 +68,7 @@
   }
   Kelvin.prototype.toF = function()
   {
-    return ((this.value - 32)/18000);
+    return (((this.value - 273)*9/5)+32);
   }
 
 
@@ -79,7 +79,7 @@
 
   exports.convertir = function() {
         //var valor = document.getElementById('convert').value,
-        //elemento  = document.getElementById('converted').value;
+        var elemento  = document.getElementById('converted');
         /* Extienda la RegeExp a la especificación. use una XRegExp */
     console.log("Valor antes del if: " +valor);
 
@@ -94,8 +94,8 @@
 
     if (valor) {
       var numero = valor[2],
-          tipo   = valor[3];
-          var nuevoTipo = valor.medida_destino,
+      tipo   = valor[3],
+      nuevoTipo = valor.medida_destino,
       numero = parseFloat(numero);
       console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
 
@@ -104,19 +104,33 @@
       switch (tipo) {
         case 'c':
           var celsius = new Celsius(numero);
-          elemento.innerHTML = celsius.toFarenheit().toFixed(2) + " Farenheit";
-          break;
-        case 'c to k':
-          var celsius = new celsius(numero);
-          elemento.innerHTML = celsius.toK().toFixed(2) + " kelvin";
+          if(nuevoTipo == 'f'){
+            elemento.innerHTML = celsius.toFarenheit().toFixed(2) + " Farenheit";
+          }
+          else if(nuevoTipo == 'k'){
+            elemento.innerHTML = celsius.toKelvin().toFixed(2) + " Kelvin";
+          }
           break;
         case 'f':
           var farenheit = new Farenheit(numero);
-          elemento.innerHTML = farenheit.toCelsius().toFixed(2) + " Celsius";
+
+          if(nuevoTipo == 'c'){
+            elemento.innerHTML = farenheit.toCelsius().toFixed(2) + " celsius";
+          }
+          else if(nuevoTipo == 'k'){
+            elemento.innerHTML = farenheit.toK().toFixed(2) + " kelvin";
+          }
           break;
+
         case 'k':
           var kelvin = new Kelvin(numero);
-          elemento.innerHTML = kelvin.toC().toFixed(2) + " Celsius";
+
+          if(nuevoTipo == 'c'){
+            elemento.innerHTML = kelvin.toC().toFixed(2) + " celsius";
+          }
+          else if(nuevoTipo == 'f'){
+          elemento.innerHTML = kelvin.toF().toFixed(2) + " farenheit";
+          }
           break;
 
         default:
