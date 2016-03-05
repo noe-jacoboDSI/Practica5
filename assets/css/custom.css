@@ -1,5 +1,5 @@
 html {
-    background-color: #FFFF99;
+    background-color:rgba(35, 178, 218, 1); /*#FFFF99;*/
 }
 
 
@@ -9,7 +9,7 @@ footer {
     left: 0;
     width: 100%;
     padding: 10px;
-    background-color: #222;
+    background-color: #333;
 }
 
 footer a {
@@ -23,16 +23,31 @@ footer a {
 .app {
     width: 70%;
     margin-top: 10%;
-    left: 200px;
+    left: 270px;
 
+}
+
+.imag-pru{
+  background-image: url("http://cortinahome.es/media/wysiwyg/cortinahome/iconos/ico-temperatura.png");
+  background-position:top left;
+  background-repeat: no-repeat;
+  display: block;
 }
 
 h4 {
-    font-weight: 500;
+    font-family: Arial;
+    max-width: 300px;
+    margin:0 0 25px;
+    overflow:hidden;
+    padding:20px;
+    background-color:rgba(255, 255, 0, 0.9);
+    border:1px ;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 span {
-    color: green;
+    color: red;
 }
 
 @media (max-width: 550px) {

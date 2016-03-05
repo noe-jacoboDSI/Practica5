@@ -416,6 +416,13 @@ optgroup {
  * Remove most spacing between table cells.
  */
 
+ .imag-pru{
+   background-image: url("http://cortinahome.es/media/wysiwyg/cortinahome/iconos/ico-temperatura.png");
+   background-position:top left;
+   background-repeat: no-repeat;
+   display: block;
+ }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

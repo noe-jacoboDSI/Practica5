@@ -41,6 +41,13 @@
   float: left;
   box-sizing: border-box; }
 
+  .imag-pru{
+    background-image: url("http://cortinahome.es/media/wysiwyg/cortinahome/iconos/ico-temperatura.png");
+    background-position:top left;
+    background-repeat: no-repeat;
+    display: block;
+  }
+
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
