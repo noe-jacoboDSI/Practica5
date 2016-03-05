@@ -9,17 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aluXXXXXXX/STW03.git"
+    "url": "https://github.com/noe-jacoboDSI/Practica_3/"
   },
   "keywords": [
     "conversor"
   ],
-  "author": "",
+  "author": "Noé y Jacobo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aluXXXXXXX/STW03/issues"
+    "url": "http://noe-jacobodsi.github.io/Practica_3"
   },
-  "homepage": "https://github.com/aluXXXXXXX/STW03",
+  "homepage": "http://dsi1516.github.io/Practica1",
+  "homepage1":"http://alu0100836059.github.io/pagina_personal",
   "devDependencies": {
   }
 }
