@@ -1,5 +1,5 @@
 html {
-    background-color: #eee;
+    background-color: #FFFF99;
 }
 
 
@@ -16,9 +16,15 @@ footer a {
     color: #FFF;
     text-decoration: none;
 }
-
+.personal{
+  /*float:right;*/
+  left:150px;
+}
 .app {
+    width: 70%;
     margin-top: 10%;
+    left: 200px;
+
 }
 
 h4 {

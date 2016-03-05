@@ -180,7 +180,7 @@ input[type="button"] {
   line-height: 38px;
   letter-spacing: .1rem;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: blue;
   white-space: nowrap;
   background-color: transparent;
   border-radius: 4px;
