@@ -66,7 +66,6 @@
   }
   Kelvin.prototype.toF = function()
   {
-    console.log("entramos a toF");
     return (((this.value - 273)*9/5)+32);
   }
 
@@ -83,20 +82,35 @@
     return (this.value * 39.37);
   }
 
+  /******** Pulgadas que hereda de Temperatura ********/
+  function Pulgadas(valor)
+  {
+    Temperatura.call(this,valor);
+
+  }
+  Pulgadas.prototype = new Temperatura();
+  Pulgadas.prototype.constructor = Pulgadas;
+  Pulgadas.prototype.toMeters = function()
+  {
+    return (this.value * 0.0254);
+  }
+
+
 
   exports.Temperatura = Temperatura;
   exports.Celsius = Celsius;
   exports.Farenheit = Farenheit;
   exports.Kelvin = Kelvin;
   exports.Metros = Metros;
+  exports.Pulgadas = Pulgadas;
 
-  exports.convertir = function() {
+  exports.convertir = function(){
 
   var elemento  = document.getElementById('converted');
 
   //console.log("Valor antes del if: " +valor);
 
-  var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMm])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcKkPp])   #medida_destino ', 'x');
+  var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcFfKkPpMm])   #medida_destino ', 'x');
   var valor = XRegExp.exec(convert.value, regexp);
 
 
@@ -105,7 +119,7 @@
       tipo   = valor[3].toLowerCase(),
       nuevoTipo = valor.medida_destino.toLowerCase(),
       numero = parseFloat(numero);
-      console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
+      //console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
 
 
       switch (tipo) {
@@ -144,6 +158,13 @@
               var metros = new Metros(numero);
                 if(nuevoTipo == 'p'){
                   elemento.innerHTML = metros.toP().toFixed(2) + " pulgadas";
+                }
+        break;
+
+        case 'p':
+              var pulgadas = new Pulgadas(numero);
+                if(nuevoTipo == 'm'){
+                  elemento.innerHTML = pulgadas.toMeters().toFixed(2) + " metros";
                 }
         break;
 
