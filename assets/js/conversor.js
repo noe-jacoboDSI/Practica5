@@ -6,8 +6,6 @@
   {
     this.value = valor;
     this.type = tipo;
-    /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
-    /* ademas de new Medida(45.2, "Km") */
   }
   Medida.constructor = Medida;
 
@@ -68,8 +66,10 @@
   }
   Kelvin.prototype.toF = function()
   {
+    console.log("entramos a toF");
     return (((this.value - 273)*9/5)+32);
   }
+
   /******* Metros que hereda de Temperatura ********/
   function Metros(valor)
   {
@@ -91,24 +91,22 @@
   exports.Metros = Metros;
 
   exports.convertir = function() {
-        //var valor = document.getElementById('convert').value,
+
   var elemento  = document.getElementById('converted');
-        /* Extienda la RegeExp a la especificación. use una XRegExp */
-  console.log("Valor antes del if: " +valor);
+
+  //console.log("Valor antes del if: " +valor);
 
   var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMm])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcKkPp])   #medida_destino ', 'x');
-
-  //regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([fFkKcC])(e|el|els|elsi|elsiu|elsiu|elsius|a|ar|are|aren|arenh|arenhe|arenhei|arenheit|elv|elvi|elvin)?\s* (to|To|tO|TO)?\s* ([cCfFkK])$/;
   var valor = XRegExp.exec(convert.value, regexp);
 
-  console.log("Valor antes del if: " +valor);
 
   if (valor) {
       var numero = valor[2],
-      tipo   = valor[3],
-      nuevoTipo = valor.medida_destino,
+      tipo   = valor[3].toLowerCase(),
+      nuevoTipo = valor.medida_destino.toLowerCase(),
       numero = parseFloat(numero);
       console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
+
 
       switch (tipo) {
 
@@ -150,8 +148,8 @@
         break;
 
         default:
-          console.log ('Estamos en la parte default del metodo convertir');
-
+          //console.log ('Estamos en la parte default del metodo convertir');
+          elemento.innerHTML = "Formato no aceptado"
      }
   }else
       //elemento.innerHTML = "";
