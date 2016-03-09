@@ -28,12 +28,12 @@
   Celsius.prototype.toFarenheit = function()
   {
     return ((this.value * 9/5) + 32);
-  }
+  };
 
   Celsius.prototype.toKelvin = function()
   {
     return (this.value + 273.15);
-  }
+  };
 
   /********* Farenheit que hereda de Temperatura *********/
   function Farenheit(valor)
@@ -46,11 +46,11 @@
   Farenheit.prototype.toCelsius = function()
   {
     return ((this.value - 32)* 5/9);
-  }
-  Farenheit.prototype.toK = function()
+  };
+  Farenheit.prototype.toKelvin = function()
   {
     return (((this.value - 32)*5/9) + 273);
-  }
+  };
 
   /******* Kelvin que hereda de Temperatura ********/
   function Kelvin(valor)
@@ -60,14 +60,14 @@
   }
   Kelvin.prototype = new Temperatura();
   Kelvin.prototype.constructor = Kelvin;
-  Kelvin.prototype.toC = function()
+  Kelvin.prototype.toCelsius = function()
   {
     return (this.value - 273.15);
-  }
-  Kelvin.prototype.toF = function()
+  };
+  Kelvin.prototype.toFarenheit = function()
   {
     return (((this.value - 273)*9/5)+32);
-  }
+  };
 
   /******* Metros que hereda de Temperatura ********/
   function Metros(valor)
@@ -77,7 +77,7 @@
   }
   Metros.prototype = new Temperatura();
   Metros.prototype.constructor = Metros;
-  Metros.prototype.toP = function()
+  Metros.prototype.toPulgadas = function()
   {
     return (this.value * 39.37);
   }
@@ -93,8 +93,8 @@
   Pulgadas.prototype.toMeters = function()
   {
     return (this.value * 0.0254);
-  }
-
+  };
+  //var regexpsimple= XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion');
 
 
   exports.Temperatura = Temperatura;
@@ -110,11 +110,14 @@
 
   //console.log("Valor antes del if: " +valor);
 
-  var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional  \n (?<medida_destino>   [ ]*[CcFfKkPpMm])   #medida_destino ', 'x');
+  var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n\
+                        (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional \n\
+                        (?<medida_destino>   [ ]*[CcFfKkPpMm])   #medida_destino ', 'x');
   var valor = XRegExp.exec(convert.value, regexp);
 
 
   if (valor) {
+      var resultado;
       var numero = valor[2],
       tipo   = valor[3].toLowerCase(),
       nuevoTipo = valor.medida_destino.toLowerCase(),
@@ -127,53 +130,60 @@
         case 'c':
             var celsius = new Celsius(numero);
               if(nuevoTipo == 'f'){
-                elemento.innerHTML = celsius.toFarenheit().toFixed(2) + " Farenheit";
+                resultado=celsius.toFarenheit().toFixed(2) + " Farenheit";
               }
             else if(nuevoTipo == 'k'){
-                elemento.innerHTML = celsius.toKelvin().toFixed(2) + " Kelvin";
+
+                resultado=celsius.toKelvin().toFixed(2) + " Kelvin";
               }
         break;
 
         case 'f':
             var farenheit = new Farenheit(numero);
               if(nuevoTipo == 'c'){
-                elemento.innerHTML = farenheit.toCelsius().toFixed(2) + " celsius";
+
+                 resultado=farenheit.toCelsius().toFixed(2) + " celsius";
               }
               else if(nuevoTipo == 'k'){
-                elemento.innerHTML = farenheit.toK().toFixed(2) + " kelvin";
+
+                resultado=farenheit.toKelvin().toFixed(2) + " kelvin";
               }
         break;
 
         case 'k':
             var kelvin = new Kelvin(numero);
               if(nuevoTipo == 'c'){
-                elemento.innerHTML = kelvin.toC().toFixed(2) + " celsius";
+
+                resultado= kelvin.toCelsius().toFixed(2) + " celsius";
               }
               else if(nuevoTipo == 'f'){
-                elemento.innerHTML = kelvin.toF().toFixed(2) + " farenheit";
+                resultado=kelvin.toFarenheit().toFixed(2) + " farenheit";
               }
         break;
 
         case 'm':
               var metros = new Metros(numero);
                 if(nuevoTipo == 'p'){
-                  elemento.innerHTML = metros.toP().toFixed(2) + " pulgadas";
+                  resultado= metros.toP().toFixed(2) + " pulgadas";
                 }
         break;
 
         case 'p':
               var pulgadas = new Pulgadas(numero);
                 if(nuevoTipo == 'm'){
-                  elemento.innerHTML = pulgadas.toMeters().toFixed(2) + " metros";
+                  resultado= pulgadas.toMeters().toFixed(2) + " metros";
                 }
         break;
 
         default:
           //console.log ('Estamos en la parte default del metodo convertir');
-          elemento.innerHTML = "Formato no aceptado"
+          elemento.innerHTML = "ERROR!!! Intente escribir algo como: '3.2e-3 C to F' "
      }
+     elemento.innerHTML= resultado;
+     return false;
   }else
       //elemento.innerHTML = "";
+      //converted.innerHTML = "ERROR!!! Intente escribir algo como: '3.2e-3 C to F' ";
       console.log("Estamos en el else exterior.");
   }
 

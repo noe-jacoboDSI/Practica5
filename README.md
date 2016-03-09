@@ -1,6 +1,7 @@
 # Práctica OOP en JS
 
-Este repositorio aloja la práctica de conversión de tipos, realizada con html, css y javascript, usando POO y haciendo uso de la herencia en javascript.
+En esta práctica lo que hemos hecho ha sido un conversor de temperatura con clases en javascript utilizando objetos y herencia.
+ En ella se puede pasar a grados Farenheit, Celsius y Kelvin y además puede pasar de metros a pulgadas.
 
 
 **Repositorio GitHuB**
@@ -15,3 +16,6 @@ Este repositorio aloja la práctica de conversión de tipos, realizada con html,
 
 * Web Noé[http://dsi1516.github.io/Practica1](http://dsi1516.github.io/Practica1)
 * Web Jacobo[http://alu0100836059.github.io/pagina_personal](http://alu0100836059.github.io/pagina_personal)
+
+**Página Campus Virtual**
+* C.V description practica[https://campusvirtual.ull.es/1516/mod/page/view.php?id=178103](https://campusvirtual.ull.es/1516/mod/page/view.php?id=178103)
