@@ -1,16 +1,21 @@
 (function(exports){
 "use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 
-function Celsius(valor)
+function Celsius(valor,tipo,nuevoTipo)
 {
-  Temperatura.call(this,valor);
+  Temperatura.call(this,valor,tipo,nuevoTipo);
+
 }
-Celsius.prototype = new Temperatura();
+
+Celsius.prototype = new Temperatura();//heredamos de temp
 Celsius.prototype.constructor = Celsius;
 
 
+Celsius
+
 Celsius.prototype.toFarenheit = function()
 {
+
   return ((this.value * 9/5) + 32);
 };
 
