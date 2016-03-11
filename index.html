@@ -26,13 +26,14 @@
   <script type="text/javascript" src="assets/js/medida.js"></script>
   <script type="text/javascript" src="assets/js/temperatura.js"></script>
   <script type="text/javascript" src="assets/js/celsius.js"></script>
-  <script type="text/javascript" src="assets/js/kelvin.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+  <!--<script type="text/javascript" src="assets/js/kelvin.js"></script>
   <script type="text/javascript" src="assets/js/farenheit.js"></script>
+-->
   <script type="text/javascript" src="http://xregexp.com/v/3.1.0/xregexp-all.js"></script>
 
 
-  <!-- FAVICON
-  -------------------------------------------------- -->
+  <!-- FAVICON  -->
   <link rel="icon" type="image/png" href="http://www.jmcprl.net/GIF%20ANI3/TERMOMETRO.GIF">
 
 </head>
@@ -49,7 +50,7 @@
         <!--input id="convert" class="u-full-width" type="text" autofocus onchange="convertir();" placeholder="50Farenheit to Kelvin"-->
         <td>
                   <!--input id="original" autofocus onchange="calculate();" placeholder="32F" size="50"-->
-                  <form id="formulario" onsubmit="return convertir();">
+                  <form id="formulario" onsubmit="convertir();">
                   <input id="convert"
                          placeholder="32F"
                          size="50"

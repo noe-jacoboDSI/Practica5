@@ -1,4 +1,4 @@
-(function(exports){
+//(function(exports){
 "use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 
 function Celsius(valor,tipo,nuevoTipo)
@@ -11,8 +11,6 @@ Celsius.prototype = new Temperatura();//heredamos de temp
 Celsius.prototype.constructor = Celsius;
 
 
-Celsius
-
 Celsius.prototype.toFarenheit = function()
 {
 
@@ -24,5 +22,5 @@ Celsius.prototype.toKelvin = function()
   return (this.value + 273.15);
 };
 
-exports.Celsius=Celsius;
-})(this);
+//exports.Celsius=Celsius;
+//})(this);

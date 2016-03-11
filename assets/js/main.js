@@ -1,9 +1,9 @@
-(function(exports){
 
+"use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 
-exports.convertir = function(){
+function convertir(){
 
-var elemento  = document.getElementById('converted');
+var elemento  = document.getElementById('convert');
 
 //console.log("Valor antes del if: " +valor);
 
@@ -16,18 +16,19 @@ var valor = XRegExp.exec(convert.value, regexp);
 if (valor) {
     var resultado;
     var numero = valor[2],
-    tipo   = valor[3].toLowerCase(),
-    nuevoTipo = valor.medida_destino.toLowerCase(),
-    numero = parseFloat(numero);
+      tipo   = valor[3].toLowerCase(),
+      nuevoTipo = valor.medida_destino.toLowerCase(),
+      numero = parseFloat(numero);
     //console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
-
     if(tipo == 'c'){
-      resultado = new Celsius(numero,valor,nuevoTipo);
+      console.log("Entre en celsius" +numero + nuevoTipo);
+      resultado = new Celsius(numero,tipo,nuevoTipo);
       elemento.innerHTML=resultado;
       return false;
     }else{
         console.log("Estamos en el else de dentro ");
       elemento.innerHTML="ERROR!!! Intente escribir algo como: '3.2e-3 C to F' ";
+    }
  }else{
    console.log("Estamos en el else de fuera ");
  elemento.innerHTML="ERROR!!! Intente escribir algo como: '3.2e-3 C to F' ";
@@ -35,5 +36,4 @@ if (valor) {
 }
 
 
-exports.convertir=convertir;
-})(this);
+//exports.convertir=convertir;
