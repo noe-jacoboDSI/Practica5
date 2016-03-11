@@ -11,8 +11,11 @@ Celsius.prototype.constructor = Celsius;
 
 
 Celsius.prototype.convertCelsTo = function() {
-  if(this.nuevoTipo=='f'){
+  if(this.nuevoTipo =='f'){
     return this.toFarenheit() + " grados Farenheit";
+  }
+  else if(this.nuevoTipo == "k"){
+    return this.toKelvin() + "grados Kelvin";
   }
 };
 
@@ -20,9 +23,9 @@ Celsius.prototype.toFarenheit = function(){
   return ((this.value * 9/5) + 32);
 };
 
-//Celsius.prototype.toKelvin = function(){
-//  return (this.value + 273.15);
-//};
+Celsius.prototype.toKelvin = function(){
+  return (this.value + 273.15);
+};
 
 //exports.Celsius=Celsius;
 //})(this);

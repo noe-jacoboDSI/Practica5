@@ -25,7 +25,13 @@ if (valor) {
       resultado = new Celsius(numero,tipo,nuevoTipo);
       elemento.innerHTML = resultado.convertCelsTo();
       return false;
-    }else{
+    }
+    else if (tipo == 'f') {
+      resultado = new Farenheit(numero,tipo,nuevoTipo);
+      elemento.innerHTML = resultado.ConvertFarTo();
+      return false;
+    }
+    else{
         console.log("Estamos en el else de dentro ");
       elemento.innerHTML="ERROR!!! Intente escribir algo como: '3.2e-3 C to F' ";
     }
@@ -33,6 +39,7 @@ if (valor) {
    console.log("Estamos en el else de fuera ");
  elemento.innerHTML="ERROR!!! Intente escribir algo como: '3.2e-3 C to F' ";
  }
+
 }
 
 
