@@ -3,7 +3,7 @@
 
 function convertir(){
 
-var elemento  = document.getElementById('convert');
+var elemento  = document.getElementById('converted');
 
 //console.log("Valor antes del if: " +valor);
 
@@ -23,7 +23,7 @@ if (valor) {
     if(tipo == 'c'){
       console.log("Entre en celsius" +numero + nuevoTipo);
       resultado = new Celsius(numero,tipo,nuevoTipo);
-      elemento.innerHTML=resultado;
+      elemento.innerHTML = resultado.convertCelsTo();
       return false;
     }else{
         console.log("Estamos en el else de dentro ");

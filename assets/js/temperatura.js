@@ -11,6 +11,6 @@ Temperatura.prototype = new Medida();//heredamos
 Temperatura.prototype.get_nuevotipo=function(){//get para trabajar con nuestro nuevo tipo en las clases que heredan
   return this.nuevoTipo;
 }
-Temperatura.prototype.constructor = Temperatura;
+//Temperatura.prototype.constructor = Temperatura;
 //exports.Temperatura=Temperatura;
 //})(this);

@@ -4,7 +4,7 @@ function Farenheit(valor)
 
 }
 Farenheit.prototype = new Temperatura();
-Farenheit.prototype.constructor = Farenheit;
+//Farenheit.prototype.constructor = Farenheit;
 Farenheit.prototype.toCelsius = function()
 {
   return ((this.value - 32)* 5/9);

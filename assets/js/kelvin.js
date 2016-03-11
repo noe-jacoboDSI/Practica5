@@ -4,7 +4,7 @@ function Kelvin(valor)
 
 }
 Kelvin.prototype = new Temperatura();
-Kelvin.prototype.constructor = Kelvin;
+//Kelvin.prototype.constructor = Kelvin;
 Kelvin.prototype.toCelsius = function()
 {
   return (this.value - 273.15);
