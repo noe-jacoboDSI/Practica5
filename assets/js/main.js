@@ -1,11 +1,10 @@
-
+(function(exports){
 "use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 
 function convertir(){
 
 var elemento  = document.getElementById('converted');
 
-//console.log("Valor antes del if: " +valor);
 
 var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n\
                       (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional \n\
@@ -48,4 +47,5 @@ if (valor) {
 }
 
 
-//exports.convertir=convertir;
+exports.convertir=convertir;
+})(this);
