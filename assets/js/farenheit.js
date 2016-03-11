@@ -12,7 +12,7 @@ Farenheit.prototype.ConvertFarTo = function(){
     return this.toCelsius() +" grados Celsius";
   }
   else if (this.nuevoTipo == 'k') {
-    return this.toKelvin().toFixed(1) +" grados Kelvin";
+    return this.toKelvin() +" grados Kelvin";
   }
 };
 
