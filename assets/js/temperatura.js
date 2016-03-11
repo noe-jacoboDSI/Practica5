@@ -1,4 +1,4 @@
-//(function(exports){
+(function(exports){
   "use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 function Temperatura(valor,tipo,nuevoTipo){
   this.nuevoTipo = nuevoTipo;//varaible propia que va a tener temperatura para saber a que convertir
@@ -12,5 +12,5 @@ Temperatura.prototype.get_nuevotipo=function(){//get para trabajar con nuestro n
   return this.nuevoTipo;
 }
 //Temperatura.prototype.constructor = Temperatura;
-//exports.Temperatura=Temperatura;
-//})(this);
+exports.Temperatura=Temperatura;
+})(this);

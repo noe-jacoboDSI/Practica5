@@ -1,3 +1,4 @@
+(function(exports){
 "use strict"
 
 function Kelvin(valor,tipo,nuevoTipo){
@@ -24,3 +25,5 @@ Kelvin.prototype.toCelsius = function(){
 Kelvin.prototype.toFarenheit = function(){
   return (((this.value - 273)*9/5)+32);
 };
+exports.Kelvin=Kelvin;
+})(this);

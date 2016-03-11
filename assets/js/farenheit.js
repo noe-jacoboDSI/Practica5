@@ -1,3 +1,4 @@
+(function(exports){
 "use strict"
 function Farenheit(valor,tipo,nuevoTipo){
 
@@ -23,3 +24,5 @@ Farenheit.prototype.toCelsius = function(){
 Farenheit.prototype.toKelvin = function(){
   return (((this.value - 32)*5/9) + 273);
 };
+exports.Farenheit=Farenheit;
+})(this);
