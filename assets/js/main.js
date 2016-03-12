@@ -3,24 +3,27 @@
 
 function convertir(){
 
-
+//  var expresion_reducida = XRegExp('(?<expresion> ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion ');
   var  regexp = XRegExp('(?<expresion>  ([-+]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)[ ]*([cCfFkKMmPp])((e|el|els|elsi|elsiu|elsius)|(a|ar|are|aren|arenh|arenhe|arenhei|arenheit)|(e|el|elv|elvi|elvin)|(e|etr|etro|etros))?) # expresion \n\
                         (?<opcional> [ ]*([Tt][oO])?[ ]*)   #opcional \n\
                         (?<medida_destino>   [ ]*[CcFfKkPpMm])   #medida_destino ', 'x');
 
+
 var elemento  = document.getElementById('converted');
 
-
+//var val = XRegExp.exec(convert.value, expresion_reducida);
+//var valor = XRegExp.exec(convert.value, regexp, expresion_reducida);
 var valor = XRegExp.exec(convert.value, regexp);
 
 
+//alert("VAL: " + val + "   VALOR: " + valor);
 if (valor) {
     var resultado;
     var numero = valor[2],
       tipo   = valor[3].toLowerCase(),
       nuevoTipo = valor.medida_destino.toLowerCase(),
       numero = parseFloat(numero);
-    //console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
+    console.log("Valor: " + numero + ", Tipo: " + tipo, "nuevoTipo: " +nuevoTipo);
     if(tipo == 'c'){
       console.log("Entre en celsius" +numero + nuevoTipo);
       resultado = new Celsius(numero,tipo,nuevoTipo);
