@@ -11,6 +11,29 @@ Temperatura.prototype = new Medida();//heredamos
 Temperatura.prototype.get_nuevotipo=function(){//get para trabajar con nuestro nuevo tipo en las clases que heredan
   return this.nuevoTipo;
 }
+/********************/
+Celsius.prototype = new Temperatura();//heredamos de temp
+Celsius.prototype.constructor = Celsius;
+Medida.measures.c = Celsius;
+
+function Celsius(valor,tipo,nuevoTipo)
+{
+  Temperatura.call(this,valor,tipo,nuevoTipo);
+}
+
+Celsius.prototype.toFarenheit = function(){
+  return ((this.value * 9/5) + 32);
+};
+
+Celsius.prototype.toKelvin = function(){
+  return (this.value + 273.15);
+};
+
+/*************************/
+
+
+
+
 //Temperatura.prototype.constructor = Temperatura;
 exports.Temperatura=Temperatura;
 })(this);
