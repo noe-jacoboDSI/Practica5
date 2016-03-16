@@ -1,15 +1,7 @@
 "use strict";//utiliza el modo estricto donde no se puede utilizar variables no declaradas
 
+  var regexp1= '(?<numero> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?)';
 
-function Medida(valor,tipo){
-var regexp1= '(?<numero> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?)';
-
-this.value = valor;
-this.type = tipo;
-}
-
-
-Medida.match= function(){
   var regexp2 = XRegExp('^(\\s*)                                    \n' +
                 '(?<numero> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?)\n' +
                 '(\\s*)                                             \n' +
@@ -19,6 +11,16 @@ Medida.match= function(){
                 '(\\s*)                                             \n' +
                 '(?<destino> [fck]) #destino                     \n' +
                 '(\\s*)$','ix');
+
+
+function Medida(valor,tipo){
+
+this.value = valor;
+this.type = tipo;
+}
+
+
+Medida.match= function(){
 
 var valor = XRegExp.exec(convert.value, regexp2);
 return valor;
