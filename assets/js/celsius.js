@@ -9,15 +9,7 @@ function Celsius(valor,tipo,nuevoTipo)
 Celsius.prototype = new Temperatura();//heredamos de temp
 Celsius.prototype.constructor = Celsius;
 
-
-Celsius.prototype.convertCelsTo = function() {
-  if(this.nuevoTipo =='f'){
-    return this.toFarenheit() + " grados Farenheit";
-  }
-  else if(this.nuevoTipo == "k"){
-    return this.toKelvin() + "grados Kelvin";
-  }
-};
+Medida.measures.c = Celsius;
 
 Celsius.prototype.toFarenheit = function(){
   return ((this.value * 9/5) + 32);
