@@ -51,11 +51,12 @@
         <!--input id="convert" class="u-full-width" type="text" autofocus onchange="convertir();" placeholder="50Farenheit to Kelvin"-->
         <td>
                   <!--input id="original" autofocus onchange="calculate();" placeholder="32F" size="50"-->
-                <form id="formulario" autofcus onchange="main();">
+                <form id="formulario" onsubmit="return main();">
                   <input id="convert"
                          placeholder="32F"
                          size="50"
                          title = "Escribe un número seguido de una de las letras 'F' o 'C'"
+                         autofocus
                   />
                 </form>
         </td>
