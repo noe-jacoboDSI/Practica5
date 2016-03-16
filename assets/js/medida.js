@@ -13,11 +13,11 @@ Medida.match= function(){
   var regexp2 = XRegExp('^(\\s*)                                    \n' +
                 '(?<numero> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?)\n' +
                 '(\\s*)                                             \n' +
-                '(?<tipo> [fckFCK])                                    \n' +
+                '(?<tipo> [fck]) #tipo                           \n' +
                 '(\\s*)                                             \n' +
                 '(to)?                                              \n' +
                 '(\\s*)                                             \n' +
-                '(?<destino> [fckFCK])                                      \n' +
+                '(?<destino> [fck]) #destino                     \n' +
                 '(\\s*)$','ix');
 
 var valor = XRegExp.exec(convert.value, regexp2);
@@ -35,6 +35,7 @@ Medida.convertir = function(valor) {
     var numero = match.numero,
         tipo   = match.tipo,
         destino = match.destino;
+
 
     try {
       var source = new measures[tipo](numero);  // new Fahrenheit(32)
