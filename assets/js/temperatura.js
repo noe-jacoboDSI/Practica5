@@ -27,7 +27,8 @@ Celsius.prototype.toFarenheit = function(){
 };
 
 Celsius.prototype.toKelvin = function(){
-  return (this.value + 273.15);
+  //return (this.value + 273.15);
+  return (parseFloat(this.value)+273.15);
 };
 
 /*************************/
