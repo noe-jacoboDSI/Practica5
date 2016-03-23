@@ -1,18 +1,22 @@
 {
-  "name": "Conversor",
+  "name": "Conversor-mocha-chai-sinon",
   "version": "0.0.1",
-  "description": "Conversor javascript de tipos",
-  "main": "conversor.js",
+  "description": "example in: https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/",
+  "main": "main.js",
   "scripts": {
     "test": "mocha test",
     "chai": "curl https://raw.githubusercontent.com/chaijs/chai/master/chai.js -o test/chai.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noe-jacoboDSI/Practica_3/"
+    "url": "git://github.com/crguezl/mocha-chai-sinon--example.git"
   },
   "keywords": [
-    "conversor"
+    "conversor",
+    "mocha",
+    "chai",
+    "blanket",
+    "sinon"
   ],
   "author": "Noé y Jacobo",
   "license": "ISC",
@@ -22,5 +26,7 @@
   "homepage": "http://dsi1516.github.io/Practica1",
   "homepage1":"http://alu0100836059.github.io/pagina_personal",
   "devDependencies": {
+    "chai":"*",
+    "mocha":"*"
   }
 }
